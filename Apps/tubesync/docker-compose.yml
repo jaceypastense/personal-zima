@@ -36,7 +36,7 @@ x-casaos:
   # thumbnail: ""
   # Title for the application
   title:
-    en_us: tubesync
+    en_us: TubeSync
   # Category under which the application falls
   category: Personal Apps
   port_map: '4848'
