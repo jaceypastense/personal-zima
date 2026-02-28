@@ -6,7 +6,7 @@ services:
     ports:
       - 8765:8000
     volumes:
-      - /DATA/AppData/$AppID/crontabs:/etc/crontabs:rw      # This is where the scripts will be located
+      - /DATA/AppData/$AppID/crontabscripts:/etc/crontabscripts:rw      # This is where the scripts will be located
       - /DATA/Downloads:/data/personal:ro                            # Persistent log storage
       - /DATA/AppData/$AppID/.ssh:/root/.ssh:ro                   # Optional: mount SSH keys for rsync over SSH
     networks: {}
