@@ -10,7 +10,18 @@ x-casaos:
     - amd64
   main: app
   description:
-    en_us: A self-hosted local image optimizer that runs in your browser..
+    en_us: |
+      MAZANOKE is a simple image optimizer that runs in your browser, works offline, and keeps your images private without ever leaving your device. Created for everyday people and designed to be shared with family and friends, it serves as an alternative to questionable "free" online tools.
+      
+      **Features:**
+      - Adjust image quality
+      - Set target file size
+      - Set max width/height
+      - Paste images from clipboard
+      - Convert between and to JPG, PNG, WebP, ICO
+      - Convert from HEIC, AVIF, TIFF, GIF, SVG
+
+    
     developer: civilblur
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mazanoke.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mazanoke.png
