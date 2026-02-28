@@ -3,6 +3,9 @@ Recreated Zima Apps for Perosnal Use
 
 ## Apps List
 
+### Crontab-GUI
+[Crontab UI](https://github.com/alseambusher/crontab-ui)  Editing the plain text crontab is error prone for managing jobs, e.g., adding jobs, deleting jobs, or pausing jobs. A small mistake can easily bring down all the jobs and might cost you a lot of time. With Crontab UI, it is very easy to manage crontab.
+
 ### Glance
 [Glance](https://github.com/glanceapp/glance) A lightweight, highly customizable dashboard that displays your feeds in a beautiful, streamlined interface. 
 ** Note: Don't forget to copy the glance.yml to config folder.
