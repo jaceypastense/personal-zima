@@ -20,6 +20,10 @@ x-casaos:
       - Paste images from clipboard
       - Convert between and to JPG, PNG, WebP, ICO
       - Convert from HEIC, AVIF, TIFF, GIF, SVG
+      - Works offline
+      - On-device image processing
+      - Removes EXIF data (location, date, etc.)
+      - No tracking
 
     
     developer: civilblur

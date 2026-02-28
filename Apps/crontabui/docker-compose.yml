@@ -16,7 +16,16 @@ x-casaos:
     - amd64
   main: app
   description:
-    en_us: Crontab Web GUI with Rsync for Backing up between different devices.
+    en_us: |
+      Crontab Web GUI with Rsync for Backing up between different devices.
+      
+      - Easy setup. You can even import from existing crontab.
+      - Safe adding, deleting or pausing jobs. Easy to maintain hundreds of jobs.
+      - Backup your crontabs.
+      - Export crontab and deploy on other machines without much hassle.
+      - Error log support.
+      - Mailing and hooks support.
+
     developer: ""
   
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cron-master.png
