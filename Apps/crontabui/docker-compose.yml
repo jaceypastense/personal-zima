@@ -1,0 +1,29 @@
+name: crontab-ui
+services:
+  app:
+    image: snoopcatt/asustor-crontabui
+    restart: unless-stopped
+    ports:
+      - 8765:8000
+    volumes:
+      - /DATA/AppData/$AppID/crontabs:/etc/crontabs:rw      # This is where the scripts will be located
+      - /DATA/Downloads:/data/personal:ro                            # Persistent log storage
+      - /DATA/AppData/$AppID/.ssh:/root/.ssh:ro                   # Optional: mount SSH keys for rsync over SSH
+    networks: {}
+#
+x-casaos:
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: Crontab Web GUI with Rsync for Backing up between different devices.
+    developer: ""
+  
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cron-master.png
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cron-master.png
+  title:
+    en_us: CrontabUI
+  category: Personal Apps
+  port_map: '8765'
+  tagline:
+    en_us: Rsync between your servers!
