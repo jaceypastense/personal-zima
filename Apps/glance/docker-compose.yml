@@ -1,0 +1,35 @@
+name: glance
+
+version: '3.8'
+
+services:
+  glance:
+    image: glanceapp/glance:v0.8.4                       # Uses the official Glance Docker image.
+    container_name: glance                        # Assigns a custom container name for easy management.
+    volumes:
+      - /DATA/AppData/$AppID/config:/app/config
+      - /DATA/AppData/$AppID/assets:/app/assets
+      - /etc/timezone:/etc/timezone:ro            # Ensures container timezone sync.
+    ports:
+      - 8280:8080                                 # Exposes Glance on port 8280.
+    restart: unless-stopped                       # Restarts container unless manually stopped.
+    environment:
+      - MY_SECRET_TOKEN=123456
+
+x-casaos:
+  architectures:
+    - amd64
+  main: glance
+  description:
+    en_us: A lightweight, highly customizable dashboard that displays your feeds in a beautiful, streamlined interface. Add the glance.yml file to the config folder to get started. https://github.com/glanceapp/glance/blob/main/docs/glance.yml
+  developer: "Svilen Markov"
+  
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glance.png
+  #thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glance.png
+  title:
+    en_us: Glance
+  category: Personal Apps
+  tips:
+    en_us: "Add the glance.yml inside the config folder."
+
+
