@@ -10,6 +10,14 @@ Recreated Zima Apps for Perosnal Use
 [Glance](https://github.com/glanceapp/glance) A lightweight, highly customizable dashboard that displays your feeds in a beautiful, streamlined interface. 
 ** Note: Don't forget to copy the glance.yml to config folder.
 
+### Karaoke Eternal
+[Karaoke Eternal](https://www.karaoke-eternal.com/) Host awesome karaoke parties where everyone can easily find and queue songs from their phone’s browser. The player is also fully browser-based with support for MP3+G, MP4 videos and WebGL visualizations. The server is self-hosted and runs on nearly everything.
+
+### Mazanoke
+[Mazanoke](https://mazanoke.com/) MAZANOKE is a simple image optimizer that runs in your browser, works offline, and keeps your images private without ever leaving your device.
+
+Created for everyday people and designed to be shared with family and friends, it serves as an alternative to questionable "free" online tools.
+
 ### Metube
 [Metube](https://github.com/alexta69/metube) is a web GUI for youtube-dl (using the yt-dlp fork) with playlist support. Allows you to download videos from YouTube and dozens of other sites.
 
