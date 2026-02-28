@@ -1,0 +1,22 @@
+name: mazanoke
+services:
+  app:
+    image: ghcr.io/civilblur/mazanoke:latest
+    ports:
+      - "3474:80"
+#
+x-casaos:
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: A self-hosted local image optimizer that runs in your browser..
+    developer: civilblur
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mazanoke.png
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/mazanoke.png
+  title:
+    en_us: Mazanoke
+  category: Personal Apps
+  port_map: '3474'
+  tagline:
+    en_us: A self-hosted local image optimizer that runs in your browser!
