@@ -26,6 +26,9 @@ x-casaos:
       - Error log support.
       - Mailing and hooks support.
 
+      **Learn More:**
+      - [Developer's Site](https://lifepluslinux.blogspot.com/2015/06/crontab-ui-easy-and-safe-way-to-manage.html)
+
     developer: ""
   
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cron-master.png
