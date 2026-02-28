@@ -1,11 +1,12 @@
 name: drawio
 services:
   app:
-    image: jgraph/drawio
+    image: jgraph/drawio:latest
     restart: unless-stopped
     ports:
       - 5180:8080
       - 5183:8443
+
 
 # CASAOS ENVIRONMENT VARIABLES AND METADATA     
 
@@ -20,10 +21,10 @@ x-casaos:
   # Icon URL for the application
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/draw-io.png
   # Thumbnail image for the application (if any)
-  thumbnail: ""
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/draw-io.png
   # Title for the application
   title:
-    en_us: draw.io
+    en_us: Draw.io
   # Category under which the application falls
   category: Personal Apps
   tagline:
