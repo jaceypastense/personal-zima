@@ -1,0 +1,35 @@
+name: termix
+services:
+  termix:
+    image: ghcr.io/lukegus/termix:latest
+    container_name: termix
+    restart: unless-stopped
+    ports:
+      - "8380:8080"
+    volumes:
+      - /DATA/AppData/$AppID/termix-data:/app/data
+#    environment:
+#      PORT: "8380"
+
+
+x-casaos:
+  architectures:
+    - amd64
+  main: termix
+  description:
+    en_us: |
+      Termix is an open-source, forever-free, self-hosted all-in-one server management platform. It provides a multi-platform solution for managing your servers and infrastructure through a single, intuitive interface. Termix offers SSH terminal access, SSH tunneling capabilities, remote file management, and many other tools. Termix is the perfect free and self-hosted alternative to Termius available for all platforms.
+  
+      **Features:**
+      - **SSH Terminal Access**: Termix provides a built-in SSH terminal that allows you to access and manage your servers directly from the web interface. You can execute commands, monitor server performance, and manage your infrastructure without the need for additional SSH clients.
+      - **SSH Tunneling**: With Termix, you can easily set up SSH tunnels to securely access services running on your servers. This feature is particularly useful for accessing services that are behind firewalls or not directly accessible from the internet.
+      - **Remote File Management**: Termix includes a file manager that allows you to manage files on your servers remotely. You can upload, download, and organize files without needing to use separate FTP clients or command-line tools.
+      - **Multi-Platform Support**: Termix  is designed to work across various platforms, making it accessible to users regardless of their operating system. Whether you're using Windows, macOS, or Linux, you can easily manage your servers with Termix.
+  
+  developer: "Luke Gus"
+  
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/termix.png
+  title:
+    en_us: Termix
+  category: Personal Apps
+  
