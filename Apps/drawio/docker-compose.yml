@@ -1,12 +1,26 @@
+#This compose file adds draw.io to your stack
 name: drawio
 services:
-  app:
-    image: jgraph/drawio:latest
+  drawio:
+    image: jgraph/drawio
+    container_name: drawio
     restart: unless-stopped
     ports:
-      - 5180:8080
-      - 5183:8443
-
+      - 8180:8080
+      - 8183:8443
+    environment:
+      PUBLIC_DNS: domain
+      ORGANISATION_UNIT: unit
+      ORGANISATION: org
+      CITY: city
+      STATE: state
+      COUNTRY_CODE: country
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://domain:8080 || exit 1"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
 
 # CASAOS ENVIRONMENT VARIABLES AND METADATA     
 
@@ -16,15 +30,15 @@ x-casaos:
   main: drawio
   description:
     en_us: draw.io is a whiteboarding / diagramming software application..
-  developer: "JGraph"
+  developer: David Benson
   
   # Icon URL for the application
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/draw-io.png
   # Thumbnail image for the application (if any)
-  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/draw-io.png
+  thumbnail: ""
   # Title for the application
   title:
-    en_us: Draw.io
+    en_us: draw.io
   # Category under which the application falls
   category: Personal Apps
   tagline:
