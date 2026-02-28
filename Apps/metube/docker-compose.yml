@@ -1,0 +1,35 @@
+name: metube
+services:
+  app:
+    image: ghcr.io/alexta69/metube
+    restart: unless-stopped
+    environment:
+      UID: $PUID
+      GID: $PGID
+      DARK_MODE: true
+    x-casaos:
+      envs: []
+    ports:
+      - target: 8081
+        published: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID/downloads
+        target: /downloads
+x-casaos:
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: Web GUI for youtube-dl with playlist support. Allows you to download videos from YouTube and dozens of other sites (https://github.com/alexta69).
+    developer: alexta69
+  
+  icon: https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/ytdlm.png
+  thumbnail: https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/ytdlm.png
+  title:
+    en_us: Metube
+  category: Personal Apps
+  port_map: '8081'
+  tagline:
+    en_us: Download videos on Youtube!
