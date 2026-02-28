@@ -1,26 +1,11 @@
-#This compose file adds draw.io to your stack
-name: drawio
+name: draw.io
 services:
-  drawio:
+  app:
     image: jgraph/drawio
-    container_name: drawio
     restart: unless-stopped
     ports:
-      - 8180:8080
-      - 8183:8443
-    environment:
-      PUBLIC_DNS: domain
-      ORGANISATION_UNIT: unit
-      ORGANISATION: org
-      CITY: city
-      STATE: state
-      COUNTRY_CODE: country
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://domain:8080 || exit 1"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 5
-      start_period: 10s
+      - 5180:8080
+      - 5183:8443
 
 # CASAOS ENVIRONMENT VARIABLES AND METADATA     
 
