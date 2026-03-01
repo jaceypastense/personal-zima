@@ -1,40 +1,35 @@
 name: qbittorrentcustom
 services:
-  qbittorrentcustom:
+  app:
     image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrentcustom
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     volumes:
       - /DATA/AppData/$AppID/config:/config
       - /DATA/Downloads:/downloads #optional
     ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
+      - 28080:8080
+      - 26881:6881
+      - 26881:6881/udp
     restart: unless-stopped  
 
 ######################
 x-casaos:
   architectures:
     - amd64
-    - arm64
-  main: qbittorrentcustom
+  main: app
   description:
     en_us: The Qbittorrent project aims to provide an open-source software alternative to µTorrent. qBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.
   tagline:
     en_us: The Qbittorrent project aims to provide an open-source software alternative to µTorrent. QBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.
   developer: LinuxServer.io
-  author: WisdomSky
+  author: snoopcatt
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
   title:
     en_us: Qbittorrent
-  category: LinuxServer.io
+  category: Personal Only
   port_map: '8080'
 
 ---
