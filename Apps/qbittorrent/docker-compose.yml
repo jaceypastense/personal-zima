@@ -1,6 +1,6 @@
 name: qbittorrent
 services:
-  qbittorrent:
+  app:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     network_mode: service:gluetun
@@ -12,7 +12,6 @@ services:
     volumes:
       - /DATA/AppData/$AppID/config:/config # Map the config directory.
       - /DATA/Downloads:/downloads # Map the downloads directory.
-
     environment:
       - PUID=1000
       - PGID=1000
@@ -23,7 +22,7 @@ x-casaos:
   architectures:
     - amd64
   # Main service for this application
-  main: qbittorrent
+  main: app
   description:
     en_us: |
       Custom Qbittorrent added network_mode on the docker compose file.
