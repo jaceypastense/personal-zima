@@ -1,0 +1,47 @@
+name: qbittorrent
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: service:gluetun
+#    ports:
+#      - 8080:8080
+#      - 6881:6881 
+#      - 6881:6881/udp
+    # Map volumes from the host to the container.
+    volumes:
+      - /DATA/AppData/$AppID/config:/config # Map the config directory.
+      - /DATA/Downloads:/downloads # Map the downloads directory.
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - WIREGUARD_ADDRESSES=10.8.0.5/24
+#      - WEBUI_PORT=3080  # PORT WILL BE ADDED in GLUETUN PORTS
+
+###################################################
+x-casaos:
+  architectures:
+    - amd64
+  # Main service for this application
+  main: qbittorrent
+  description:
+    en_us: |
+      Custom Qbittorrent added network_mode on the docker compose file.
+      **Notes:**
+      - network_mode: service:gluetun
+  tagline:
+    en_us: Qbittorrent
+  developer: "Qbittorrent Team"
+  author: snoopcatt
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
+  # Installation tips
+  tips:
+    before_install:
+      en_us: |
+        You will need to configure the providers in the environment variables. See: [Placeholder Docs](https://placeholder.com/)
+  title:
+    en_us: Qbittorrent
+  category: Personal Apps
+  port_map: ""
