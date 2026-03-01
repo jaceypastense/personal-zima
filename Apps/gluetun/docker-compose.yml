@@ -1,21 +1,21 @@
 name: gluetun
 services:
-  app:
-    image: qmcgaw/gluetun
+  gluetun:
+    image: qmcgaw/gluetun:v3.41.1
     container_name: gluetun
     cap_add:
-      - NET_ADMIN
-    ports:
-#      - 8080:8080   # qbittorrent
-#      - 6881:6881   # qbittorrent
-#      - 6881:6881/udp # qbittorrent
-#      - 17000:3000  # FIREFOX
-#      - 17001:3001  # FIREFOX
-#      - 8686:8686   # LIDARR
-#      - 9696:9696   # PROWLARR
-
+      - NET_ADMIN # This allows the container to perform network operations.
     devices:
-      -  /dev/net/tun:/dev/net/tun
+      - /dev/net/tun:/dev/net/tun # Map the TUN device, required for VPNs.
+    # Expose and map specific ports from the container to the host.
+    ports:
+      - 8888:8888/tcp # HTTP proxy port mapping.
+      - 8388:8388/tcp # Shadowsocks TCP port mapping.
+      - 8388:8388/udp # Shadowsocks UDP port mapping.
+    # Map volumes from the host to the container.
+    volumes:
+      - /DATA/AppData/$AppID/data:/gluetun # Map the data directory.
+
     environment:
       - VPN_SERVICE_PROVIDER=custom
       - VPN_TYPE=wireguard
@@ -25,31 +25,46 @@ services:
       - WIREGUARD_PRIVATE_KEY=""
       - WIREGUARD_PRESHARED_KEY=""
       - WIREGUARD_ADDRESSES=10.8.0.5/24
-      - WEBUI_PORT=3080
+      # For OpenVPN:
+      #- OPENVPN_USER= # Username for OpenVPN.
+      #- OPENVPN_PASSWORD= # Password for OpenVPN.
+      # For Wireguard (these are commented out, but can be used if Wireguard is the chosen VPN type):
+      # - WIREGUARD_PRIVATE_KEY=wOEI9rqqbDwnN8/Bpp22sVz48T71vJ4fYmFWujulwUU=
+      # - WIREGUARD_ADDRESSES=10.64.222.21/32
+      # Specify the timezone for accurate log timestamps.
       - TZ=Asia/Singapore
+      # Define how often the VPN servers list should be updated.
+      # For more details, refer to the provided link.
+      # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
+      - UPDATER_PERIOD=
 
-###########################
+###################################################
 x-casaos:
   architectures:
     - amd64
-  main: app
+  # Main service for this application
+  main: gluetun
   description:
     en_us: |
-      Lightweight swiss-army-knife-like VPN client to multiple VPN service providers.
-      
+      Lightweight swiss-knife-like VPN client to multiple VPN service providers
       **Features:**
       - Based on Alpine 3.22 for a small Docker image of 41.1MB
       - Supports: AirVPN, Cyberghost, ExpressVPN, FastestVPN, Giganews, HideMyAss, IPVanish, IVPN, Mullvad (Wireguard only), NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, SlickVPN, Surfshark, TorGuard, VPNSecure.me, VPNUnlimited, Vyprvpn, Windscribe servers .
       - Supports OpenVPN for all providers listed.
 
-      **Learn More:**
-      - [Developer's Site](https://www.karaoke-eternal.com/)
-    developer: "Quentin McGaw"
-  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gluetun.png
+  tagline:
+    en_us: Gluetun
+  developer: "Quentin McGaw"
+  author: snoopcatt
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/gluetun.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gluetun.png
+  # Installation tips
+  tips:
+    before_install:
+      en_us: |
+        You will need to configure the providers in the environment variables. See: [BigBearCasaOS Gluetun Docs](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175)
+
   title:
     en_us: Gluetun
   category: Personal Apps
-  port_map: '3080'
-  tagline:
-    en_us: Lightweight VPN client for multiple providers!
+  port_map: ""
