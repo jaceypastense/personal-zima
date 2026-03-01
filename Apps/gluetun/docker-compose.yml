@@ -1,0 +1,55 @@
+name: gluetun
+services:
+  app:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    ports:
+#      - 8080:8080   # qbittorrent
+#      - 6881:6881   # qbittorrent
+#      - 6881:6881/udp # qbittorrent
+#      - 17000:3000  # FIREFOX
+#      - 17001:3001  # FIREFOX
+#      - 8686:8686   # LIDARR
+#      - 9696:9696   # PROWLARR
+
+    devices:
+      -  /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+      - WIREGUARD_ENDPOINT_IP=""
+      - WIREGUARD_ENDPOINT_PORT="WIREGUARD CUSTOM PORT"
+      - WIREGUARD_PUBLIC_KEY=""
+      - WIREGUARD_PRIVATE_KEY=""
+      - WIREGUARD_PRESHARED_KEY=""
+      - WIREGUARD_ADDRESSES=10.8.0.5/24
+      - WEBUI_PORT=3080
+      - TZ=Asia/Singapore
+
+###########################
+x-casaos:
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: |
+      Lightweight swiss-army-knife-like VPN client to multiple VPN service providers.
+      
+      **Features:**
+      - Based on Alpine 3.22 for a small Docker image of 41.1MB
+      - Supports: AirVPN, Cyberghost, ExpressVPN, FastestVPN, Giganews, HideMyAss, IPVanish, IVPN, Mullvad (Wireguard only), NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, SlickVPN, Surfshark, TorGuard, VPNSecure.me, VPNUnlimited, Vyprvpn, Windscribe servers .
+      - Supports OpenVPN for all providers listed.
+
+      **Learn More:**
+      - [Developer's Site](https://www.karaoke-eternal.com/)
+    developer: "Quentin McGaw"
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gluetun.png
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gluetun.png
+  title:
+    en_us: Gluetun
+  category: Personal Apps
+  port_map: '3080'
+  tagline:
+    en_us: Lightweight VPN client for multiple providers!
