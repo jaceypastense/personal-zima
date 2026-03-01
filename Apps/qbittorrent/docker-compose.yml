@@ -1,45 +1,63 @@
-name: qbittorrent
+name: linuxserver-qbittorrent
 services:
   app:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
+    image: linuxserver/qbittorrent:5.1.4
+    restart: unless-stopped
     network_mode: service:gluetun
-#    ports:
-#      - 8080:8080
-#      - 6881:6881 
-#      - 6881:6881/udp
-    # Map volumes from the host to the container.
-    volumes:
-      - /DATA/AppData/$AppID/config:/config # Map the config directory.
-      - /DATA/Downloads:/downloads # Map the downloads directory.
     environment:
-      - PUID=1000
-      - PGID=1000
-#      - WEBUI_PORT=3080  # PORT WILL BE ADDED in GLUETUN PORTS
-
-###################################################
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      WEBUI_PORT: ''
+      TORRENTING_PORT: ''
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_us: Run 'id [USER]' for the owner of the host volume directories to get the UID to use here.
+        - container: PGID
+          description:
+            en_us: Run 'id [USER]' for the owner of the host volume directories to get the GID to use here.
+        - container: TZ
+          description:
+            en_us: specify a timezone to use, see this list.
+        - container: WEBUI_PORT
+          description:
+            en_us: for changing the port of the web UI, see below for explanation
+        - container: TORRENTING_PORT
+          description:
+            en_us: for changing the port of tcp/udp connection, see below for explanation
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+      - target: 6881
+        published: 6881
+        protocol: tcp
+      - target: 6881
+        published: 6881
+        protocol: udp
+    volumes:
+      - type: bind
+        source: /srv/lsio/qbittorrent/config
+        target: /config
+      - type: bind
+        source: /srv/lsio/qbittorrent/downloads
+        target: /downloads
 x-casaos:
   architectures:
     - amd64
-  # Main service for this application
+    - arm64
   main: app
   description:
-    en_us: |
-      Custom Qbittorrent added network_mode on the docker compose file.
-      **Notes:**
-      - network_mode: service:gluetun
+    en_us: The Qbittorrent project aims to provide an open-source software alternative to µTorrent. qBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.
   tagline:
-    en_us: Qbittorrent
-  developer: "Qbittorrent Team"
-  author: snoopcatt
-  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
-  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
-  # Installation tips
-  tips:
-    before_install:
-      en_us: |
-        You will need to configure the providers in the environment variables. See: [Placeholder Docs](https://placeholder.com/)
+    en_us: The Qbittorrent project aims to provide an open-source software alternative to µTorrent. QBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.
+  developer: LinuxServer.io
+  author: WisdomSky
+  icon: https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png
+  thumbnail: https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png
   title:
     en_us: Qbittorrent
-  category: Personal Apps
-  port_map: ""
+  category: LinuxServer.io
+  port_map: '8080'
