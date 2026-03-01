@@ -1,8 +1,8 @@
-name: linuxserver-qbittorrent
+name: qbittorrentcustom
 services:
-  qbittorrent:
+  qbittorrentcustom:
     image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
+    container_name: qbittorrentcustom
     environment:
       - PUID=1000
       - PGID=1000
@@ -23,7 +23,7 @@ x-casaos:
   architectures:
     - amd64
     - arm64
-  main: qbittorrent
+  main: qbittorrentcustom
   description:
     en_us: The Qbittorrent project aims to provide an open-source software alternative to µTorrent. qBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.
   tagline:
