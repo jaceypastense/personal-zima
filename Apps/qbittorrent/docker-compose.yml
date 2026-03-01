@@ -16,7 +16,6 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - WIREGUARD_ADDRESSES=10.8.0.5/24
 #      - WEBUI_PORT=3080  # PORT WILL BE ADDED in GLUETUN PORTS
 
 ###################################################
