@@ -49,7 +49,6 @@ services:
 #      - 6881:6881
 #      - 6881:6881/udp
     restart: unless-stopped
-
 #######################################################################################################################################################
 x-casaos:
   architectures:
@@ -74,9 +73,11 @@ x-casaos:
   tips:
     before_install:
       en_us: |
-        You will need to configure the providers in the environment variables. See: [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
+        **Notes**
+        - Qbittorrent will be accessible via: http://localhost:8080 and the username and password can be found in the logs.
+        - Gluetun default is set to Wireguar. Provide your own config. See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
 
   title:
-    en_us: Gluetun
+    en_us: Gluetun Plus
   category: Personal Apps
   port_map: ""
