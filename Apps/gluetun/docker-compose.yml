@@ -89,8 +89,9 @@ x-casaos:
     before_install:
       en_us: |
         **Notes**
-        - Qbittorrent will be accessible via: http://localhost:8080 and the username and password can be found in the logs.
-        - Gluetun default is set to Wireguar. Provide your own config. See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
+        - Qbittorrent: http://localhost:8080 and the username and password can be found in the logs.
+        - Gluetun default is set to Wireguard. Provide your own config. See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
+        -Firefox: https://localhost:7001
 
   title:
     en_us: Gluetun Plus
