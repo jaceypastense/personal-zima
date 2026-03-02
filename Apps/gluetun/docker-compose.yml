@@ -15,6 +15,8 @@ services:
       - 8080:8080 # qbittorrent port
       - 6881:6881 # qbittorrent port
       - 6881:6881/udp # qbittorrent port
+      - 7000:3000      # Firefox Port
+      - 7001:3001      # Firefox Port
       
     # Map volumes from the host to the container.
     volumes:
@@ -30,7 +32,7 @@ services:
       - WIREGUARD_PRESHARED_KEY=""
       - WIREGUARD_ADDRESSES=10.8.0.5/24
       - TZ=Asia/Singapore
-######QBITTORRENT STACK ###############################################################################################################################
+########################################### QBITTORRENT STACK ##########################################################################################
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -44,11 +46,21 @@ services:
     volumes:
       - /DATA/AppData/$AppID/config:/config
       - /DATA/Downloads:/downloads #optional
-#    ports:
-#      - 8080:8080
-#      - 6881:6881
-#      - 6881:6881/udp
     restart: unless-stopped
+#######################################################################################################################################################
+
+######################################################### FIREFOX STACK ###############################################################################
+  firefox:
+    image: lscr.io/linuxserver/firefox:latest
+    container_name: firefox
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /DATA/AppData/$AppID/config:/config
+    shm_size: "1gb"
+    restart: unless-stopped
+    network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
 #######################################################################################################################################################
 x-casaos:
   architectures:
@@ -62,6 +74,8 @@ x-casaos:
       - Based on Alpine 3.22 for a small Docker image of 41.1MB
       - Supports: AirVPN, Cyberghost, ExpressVPN, FastestVPN, Giganews, HideMyAss, IPVanish, IVPN, Mullvad (Wireguard only), NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, SlickVPN, Surfshark, TorGuard, VPNSecure.me, VPNUnlimited, Vyprvpn, Windscribe servers .
       - Supports OpenVPN for all providers listed.
+      - Added qbittorrent service
+
 
   tagline:
     en_us: Gluetun
