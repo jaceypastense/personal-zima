@@ -10,6 +10,10 @@ Recreated Zima Apps for Perosnal Use
 [Glance](https://github.com/glanceapp/glance) A lightweight, highly customizable dashboard that displays your feeds in a beautiful, streamlined interface. 
 ** Note: Don't forget to copy the glance.yml to config folder.
 
+### Gluetun Plus
+Gluetun + QBittorrent + Firefox + 
+Pending addition for ARR Stacks
+
 ### Karaoke Eternal
 [Karaoke Eternal](https://www.karaoke-eternal.com/) Host awesome karaoke parties where everyone can easily find and queue songs from their phone’s browser. The player is also fully browser-based with support for MP3+G, MP4 videos and WebGL visualizations. The server is self-hosted and runs on nearly everything.
 
