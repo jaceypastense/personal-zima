@@ -1,6 +1,6 @@
 name: zerobyte
 services:
-  zerobyte:
+  app:
     image: ghcr.io/nicotsx/zerobyte:v0.29
     container_name: zerobyte
     restart: unless-stopped
@@ -16,8 +16,8 @@ services:
       - APP_SECRET=94bad46...c66e25d5c2b # Generate your own secret with `openssl rand -hex 32`
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/lib/zerobyte:/var/lib/zerobyte
-#     - /path/to/your/directory:/mydata
+      - /DATA/AppData/$AppID/zerobyte:/var/lib/zerobyte
+      - /DATA/Backup:/mydata
 
 x-casaos:
   architectures:
