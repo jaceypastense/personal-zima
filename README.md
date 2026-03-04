@@ -41,7 +41,7 @@ Created for everyday people and designed to be shared with family and friends, i
 [Tubesync](https://github.com/meeb/tubesync) is a PVR (personal video recorder) for YouTube. Or, like Sonarr but for YouTube (with a built-in download client). It is designed to synchronize channels and playlists from YouTube to local directories and update your media server once media is downloaded.
 
 ### TSDProxy
-[TSDProxy](https://almeidapaulopt.github.io/tsdproxy/)  [Tailscale Docker Proxy](https://github.com/almeidapaulopt/tsdproxy)
+[TSDProxy](https://almeidapaulopt.github.io/tsdproxy/)  [Tailscale Docker Proxy](https://github.com/almeidapaulopt/tsdproxy) TSDProxy is an application that automatically creates a proxy to virtual addresses in your Tailscale network. Easy to configure and deploy, based on Docker container labels or a simple proxy list file. It simplifies traffic redirection to services running inside Docker containers, without the need for a separate Tailscale container for each service.
 
 ### Zerobyte
 [Zerobyte](https://github.com/nicotsx/zerobyte/) Zerobyte is a backup automation tool that helps you save your data across multiple storage backends. Built on top of Restic, it provides an modern web interface to schedule, manage, and monitor encrypted backups of your remote storage.
