@@ -12,8 +12,8 @@ services:
       - /dev/fuse:/dev/fuse
     environment:
       - TZ=Asia/Singapore # Set your timezone here
-      - BASE_URL=http://localhost:4096 # URL you will use to access Zerobyte
-      - APP_SECRET=94bad46...c66e25d5c2b # Generate your own secret with `openssl rand -hex 32`
+      - BASE_URL=http://127.0.0.1:4096 # URL you will use to access Zerobyte
+      - APP_SECRET="Generate your own secret with `openssl rand -hex 32` "
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /DATA/AppData/$AppID/zerobyte:/var/lib/zerobyte
@@ -24,7 +24,7 @@ x-casaos:
     - amd64
   main: app
   description:
-    en_us: Powerful backup automation for your remote storage Encrypt, compress, and protect your data with ease Web GUI for youtube-dl with playlist support. Allows you to download videos from YouTube and dozens of other sites (https://github.com/alexta69).
+    en_us: Backup automation for self-hosters. Built on top of restic.
     developer: nicotsx
   
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/zerobyte.png
@@ -34,4 +34,4 @@ x-casaos:
   category: Personal Apps
   port_map: '4096'
   tagline:
-    en_us: Download videos on Youtube!
+    en_us: Powerful backup automation for your remote storage. Encrypt, compress, and protect your data with ease!

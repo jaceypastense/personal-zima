@@ -10,8 +10,6 @@ services:
       - /DATA/AppData/$AppID/termix-data:/app/data
 #    environment:
 #      PORT: "8380"
-
-
 x-casaos:
   architectures:
     - amd64
@@ -26,8 +24,7 @@ x-casaos:
       - **Remote File Management**: Termix includes a file manager that allows you to manage files on your servers remotely. You can upload, download, and organize files without needing to use separate FTP clients or command-line tools.
       - **Multi-Platform Support**: Termix  is designed to work across various platforms, making it accessible to users regardless of their operating system. Whether you're using Windows, macOS, or Linux, you can easily manage your servers with Termix.
   
-  developer: "Luke Gus"
-  
+  developer: "Luke Gus"  
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/termix.png
   title:
     en_us: Termix
