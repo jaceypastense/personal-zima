@@ -41,7 +41,7 @@ x-casaos:
   # thumbnail: ""
   # Title for the application
   title:
-    en_us: pocket-id
+    en_us: Pocket ID
   # Category under which the application falls
   category: Personal Apps
   # port_map: '3055'
