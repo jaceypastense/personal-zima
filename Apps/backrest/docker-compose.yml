@@ -1,9 +1,10 @@
 name: backrest
 services:
-  backrest:
+  app:
     image: garethgeorge/backrest:latest
     container_name: backrest
     hostname: backrest
+    restart: unless-stopped
     volumes:
       - /DATA/AppData/$AppID/data:/data
       - /DATA/AppData/$AppID/config:/config
@@ -18,30 +19,23 @@ services:
       - TZ=Asia/Singapore
     ports:
       - "9898:9898"
-    restart: unless-stopped
+    
 
 # CASAOS ENVIRONMENT VARIABLES AND METADATA     
 
 
 x-casaos:
-  # Supported CPU architectures for this application
   architectures:
     - amd64
-  # Main service for this application
-  main: Backrest
-  # Detailed description for the application
+  main: app
   description:
     en_us: Backrest is a web-accessible backup solution built on top of restic. Backrest provides a WebUI which wraps the restic CLI and makes it easy to create repos, browse snapshots, and restore files. Additionally, Backrest can run in the background and take an opinionated approach to scheduling snapshots and orchestrating repo health operations. 
-
   developer: Gareth
   
-  # Icon URL for the application
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/backrest.png
-  # Thumbnail image for the application (if any)
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/backrest.png
-  # Title for the application
+  
   title:
     en_us: Backrest
-  # Category under which the application falls
   category: Personal Apps
   port_map: '9898'
