@@ -3,6 +3,9 @@ Recreated Zima Apps for Perosnal Use
 
 ## Apps List
 
+### Backrest
+[Backrest](https://github.com/garethgeorge/backrest) Backrest is a web-accessible backup solution built on top of restic. Backrest provides a WebUI which wraps the restic CLI and makes it easy to create repos, browse snapshots, and restore files. Additionally, Backrest can run in the background and take an opinionated approach to scheduling snapshots and orchestrating repo health operations.
+
 ### Crontab-GUI
 [Crontab UI](https://github.com/alseambusher/crontab-ui)  Editing the plain text crontab is error prone for managing jobs, e.g., adding jobs, deleting jobs, or pausing jobs. A small mistake can easily bring down all the jobs and might cost you a lot of time. With Crontab UI, it is very easy to manage crontab.
 
@@ -33,3 +36,6 @@ Created for everyday people and designed to be shared with family and friends, i
 
 ### Tubesync
 [Tubesync](https://github.com/meeb/tubesync) is a PVR (personal video recorder) for YouTube. Or, like Sonarr but for YouTube (with a built-in download client). It is designed to synchronize channels and playlists from YouTube to local directories and update your media server once media is downloaded.
+
+### Zerobyte
+[Zerobyte](https://github.com/nicotsx/zerobyte/) Zerobyte is a backup automation tool that helps you save your data across multiple storage backends. Built on top of Restic, it provides an modern web interface to schedule, manage, and monitor encrypted backups of your remote storage.
