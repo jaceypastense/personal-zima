@@ -1,0 +1,37 @@
+name: zerobyte
+services:
+  zerobyte:
+    image: ghcr.io/nicotsx/zerobyte:v0.29
+    container_name: zerobyte
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    ports:
+      - "4096:4096"
+    devices:
+      - /dev/fuse:/dev/fuse
+    environment:
+      - TZ=Asia/Singapore # Set your timezone here
+      - BASE_URL=http://localhost:4096 # URL you will use to access Zerobyte
+      - APP_SECRET=94bad46...c66e25d5c2b # Generate your own secret with `openssl rand -hex 32`
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/lib/zerobyte:/var/lib/zerobyte
+#     - /path/to/your/directory:/mydata
+
+x-casaos:
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: Powerful backup automation for your remote storage Encrypt, compress, and protect your data with ease Web GUI for youtube-dl with playlist support. Allows you to download videos from YouTube and dozens of other sites (https://github.com/alexta69).
+    developer: nicotsx
+  
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/zerobyte.png
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/zerobyte.png
+  title:
+    en_us: Zerobyte
+  category: Personal Apps
+  port_map: '4096'
+  tagline:
+    en_us: Download videos on Youtube!
