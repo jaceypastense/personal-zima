@@ -40,5 +40,8 @@ Created for everyday people and designed to be shared with family and friends, i
 ### Tubesync
 [Tubesync](https://github.com/meeb/tubesync) is a PVR (personal video recorder) for YouTube. Or, like Sonarr but for YouTube (with a built-in download client). It is designed to synchronize channels and playlists from YouTube to local directories and update your media server once media is downloaded.
 
+### TSDProxy
+[TSDProxy](https://almeidapaulopt.github.io/tsdproxy/)  Tailscale Docker Proxy (https://github.com/almeidapaulopt/tsdproxy)
+
 ### Zerobyte
 [Zerobyte](https://github.com/nicotsx/zerobyte/) Zerobyte is a backup automation tool that helps you save your data across multiple storage backends. Built on top of Restic, it provides an modern web interface to schedule, manage, and monitor encrypted backups of your remote storage.
