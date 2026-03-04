@@ -1,0 +1,42 @@
+name: tsdproxy
+services:
+  tsdproxy:
+    image: almeidapaulopt/tsdproxy:2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /DATA/AppData/$AppID/data:/data
+      - /DATA/AppData/$AppID/config:/config
+    environment:
+      - TSDPROXY_AUTHKEY="ADMIN > SETTINGS > KEYS >GENERATE NEW KEY"
+    restart: unless-stopped
+    ports:
+      - "8980:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+  # Main service for this application
+  main: tsdproxy
+  # Detailed description for the application
+  description:
+    en_us: For adding your services to tailnet. 
+
+  developer: Paulo Almeida
+  
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tsd-proxy.png
+  # Thumbnail image for the application (if any)
+  # thumbnail: ""
+  # Title for the application
+  title:
+    en_us: tsdproxy
+  # Category under which the application falls
+  category: Personal Apps
+  port_map: '8980'
+  tips:
+    en_us: "Edit the tsdproxy.yml inside the config folder."
