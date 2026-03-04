@@ -24,7 +24,8 @@ x-casaos:
   main: tsdproxy
   # Detailed description for the application
   description:
-    en_us: For adding your services to tailnet.
+    en_us: |
+      For adding your services to tailnet.
       - Generate your authkey in tailnet admin panel and add it to the environment variable.
       - Edit the tsdproxy.yml inside the config folder to add your services. 
 
