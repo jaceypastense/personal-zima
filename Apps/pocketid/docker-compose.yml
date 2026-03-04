@@ -1,0 +1,47 @@
+name: pocket-id
+services:
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:latest
+    restart: unless-stopped
+    environment:
+      # Documentation: https://pocket-id.org/docs/configuration/environment-variables
+      - APP_URL=https://pocketid.yourdomain         # Public URL for your Pocket ID instance
+      - TRUST_PROXY=true                          # Enables reverse proxy support
+      - MAXMIND_LICENSE_KEY=                      # (Optional) License key for GeoIP features
+      - PUID=1000                                 # User ID for file permission management
+      - PGID=1000                                 # Group ID for file permission management
+    ports:
+      - 3055:1411
+    volumes:
+      - "/DATA/AppData/$AppID/data:/app/data"
+    # Optional healthcheck
+    healthcheck:
+      test: "curl -f http://localhost:1411/healthz"
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+
+
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+  # Main service for this application
+  main: pocket-id
+  # Detailed description for the application
+  description:
+    en_us: Pocket ID is a self-hosted identity management system that allows you to manage your digital identity and authenticate with various services.
+
+  developer: meeb
+  
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pocket-id-light.png
+  # Thumbnail image for the application (if any)
+  # thumbnail: ""
+  # Title for the application
+  title:
+    en_us: pocket-id
+  # Category under which the application falls
+  category: Personal Apps
+  # port_map: '3055'
