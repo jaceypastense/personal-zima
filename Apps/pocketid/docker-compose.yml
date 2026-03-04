@@ -33,7 +33,7 @@ x-casaos:
   description:
     en_us: Pocket ID is a self-hosted identity management system that allows you to manage your digital identity and authenticate with various services.
 
-  developer: meeb
+  developer: pocket-id.org
   
   # Icon URL for the application
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pocket-id-light.png
