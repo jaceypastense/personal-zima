@@ -1,0 +1,40 @@
+name: uptime-kuma
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    volumes:
+      - /DATA/AppData/$AppID/data:/app/data
+    restart: unless-stopped
+    ports:
+      - "3002:3001"
+
+
+
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+  # Main service for this application
+  main: uptime-kuma
+  # Detailed description for the application
+  description:
+    en_us: |
+      Uptime Kuma is an easy-to-use self-hosted monitoring tool.
+      - Generate your authkey in tailnet admin panel and add it to the environment variable.
+      - Edit the tsdproxy.yml inside the config folder to add your services. 
+
+  developer: Louis Lam
+  
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/uptime-kuma.png
+  # Thumbnail image for the application (if any)
+  # thumbnail: ""
+  # Title for the application
+  title:
+    en_us: uptime-kuma
+  # Category under which the application falls
+  category: Personal Apps
+  port_map: '3002'
+  tips:
+    en_us: |
+      "Edit the tsdproxy.yml inside the config folder."
