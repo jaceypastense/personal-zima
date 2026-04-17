@@ -1,20 +1,15 @@
+
+name: bitmagnet
 services:
   bitmagnet:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
-    container_name: bitmagnet
+    volumes:
+      - /DATA/AppData/$AppID/config:/root/.config/bitmagnet
+    restart: unless-stopped
     ports:
-      # API and WebUI port:
       - "3333:3333"
-      # BitTorrent ports:
       - "3334:3334/tcp"
       - "3334:3334/udp"
-    restart: unless-stopped
-    environment:
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PASSWORD=postgres
-    #      - TMDB_API_KEY=your_api_key
-    volumes:
-      - ./config:/root/.config/bitmagnet
     command:
       - worker
       - run
@@ -25,12 +20,11 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-
   postgres:
     image: postgres:16-alpine
     container_name: bitmagnet-postgres
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - /DATA/AppData/$AppID/postgres:/var/lib/postgresql/data
     #    ports:
     #      - "5432:5432" Expose this port if you'd like to dig around in the database
     restart: unless-stopped
@@ -45,3 +39,34 @@ services:
         - pg_isready
       start_period: 20s
       interval: 10s
+
+
+
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+  # Main service for this application
+  main: bitmagnet
+  # Detailed description for the application
+  description:
+    en_us: |
+      A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration..
+      - A DHT crawler and protocol implementation.
+      - A torrent search engine. 
+
+  developer: Bitmagnet.io
+  
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/bitmagnet.png
+  # Thumbnail image for the application (if any)
+  # thumbnail: ""
+  # Title for the application
+  title:
+    en_us: bitmagnet
+  # Category under which the application falls
+  category: Personal Apps
+  port_map: '3333'
+  tips:
+    en_us: |
+      "Edit the tsdproxy.yml inside the config folder."
