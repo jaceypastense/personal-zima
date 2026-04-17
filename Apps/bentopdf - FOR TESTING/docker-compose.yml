@@ -1,8 +1,38 @@
+name: bentopdf
 services:
   bentopdf:
-    image: ghcr.io/alam00000/bentopdf:latest # Recommended
-    # image: bentopdfteam/bentopdf:latest     # Alternative: Docker Hub
-    container_name: bentopdf
-    ports:
-      - '3000:8080'
+    image: ghcr.io/alam00000/bentopdf:latest
     restart: unless-stopped
+    ports:
+      - "3032:8080"
+
+
+
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+  # Main service for this application
+  main: bentopdf
+  # Detailed description for the application
+  description:
+    en_us: |
+      BentoPDF is a powerful, privacy-first, client-side PDF toolkit that is self hostable and allows you to manipulate, edit, merge, and process PDF files directly in your browser. No server-side processing is required, ensuring your files remain secure and private.
+      - Note1.
+      - Note2. 
+
+  developer: Alam
+  
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/bentopdf.png
+  # Thumbnail image for the application (if any)
+  # thumbnail: ""
+  # Title for the application
+  title:
+    en_us: bentopdf
+  # Category under which the application falls
+  category: Personal Apps
+  port_map: '3032'
+  tips:
+    en_us: |
+      "Note3."
