@@ -6,7 +6,7 @@ services:
       - /DATA/AppData/$AppID/data:/app/data
     restart: unless-stopped
     ports:
-      - "3002:3001"
+      - "3031:3001"
 
 
 
@@ -34,7 +34,7 @@ x-casaos:
     en_us: uptime-kuma
   # Category under which the application falls
   category: Personal Apps
-  port_map: '3002'
+  port_map: '3031'
   tips:
     en_us: |
       "Edit the tsdproxy.yml inside the config folder."
