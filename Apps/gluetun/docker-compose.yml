@@ -20,7 +20,8 @@ services:
       - 9696:9696      # Prowlarr Port
       - 8989:8989      # Sonarr Port
       - 7878:7878      # Radarr Port
-      
+      - 6767:6767      # Bazarr Port
+
     # Map volumes from the host to the container.
     volumes:
       - /DATA/AppData/$AppID/data:/gluetun # Map the data directory.
@@ -94,13 +95,26 @@ services:
       - PGID=1000
       - TZ=Asia/Singapore
     volumes:
-      - /path/to/sonarr/data:/config
-      - /path/to/tvseries:/tv #optional
-      - /path/to/downloadclient-downloads:/downloads #optional
+      - /DATA/AppData/$AppID/sonarr:/config
+#      - /DATA/TV:/tv #optional
+      - /DATA/Downloads:/downloads #optional
     restart: unless-stopped
     network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
-    
 
+######################################################### BAZARR STACK ###############################################################################
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Singapore
+    volumes:
+      - /DATA/AppData/$AppID/bazarr:/config
+      - /DATA/Movies:/movies #optional
+      - /DATA/TV:/tv #optional
+    restart: unless-stopped
+    network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
 #######################################################################################################################################################
 
 x-casaos:
@@ -128,7 +142,8 @@ x-casaos:
     before_install:
       en_us: |
         **Notes**
-        - Qbittorrent: http://localhost:8080 and the username and password can be found in the logs.
+        - Qbittorrent: http://localhost:8080 
+        - Qbittorernt: username and password can be found in the logs.
         - See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
         - Firefox: https://localhost:7001
         - Prowlarr: http://localhost:9696
