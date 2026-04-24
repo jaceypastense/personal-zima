@@ -1,4 +1,4 @@
-name: gluetun-plus
+name: gluetun
 services:
   gluetun:
     image: qmcgaw/gluetun:v3.41.1
@@ -84,7 +84,7 @@ x-casaos:
   architectures:
     - amd64
   # Main service for this application
-  main: gluetun-plus
+  main: gluetun
   description:
     en_us: |
       Lightweight swiss-knife-like VPN client to multiple VPN service providers
