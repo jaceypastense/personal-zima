@@ -42,14 +42,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Singapore
-#      - WEBUI_PORT=3080  # PORT WILL BE ADDED in GLUETUN PORTS
       - TORRENTING_PORT=6881
     volumes:
       - /DATA/AppData/$AppID/qbittorrentconfig:/config
       - /DATA/Downloads:/downloads #optional
     restart: unless-stopped
-#######################################################################################################################################################
-
 ######################################################### FIREFOX STACK ###############################################################################
   firefox:
     image: lscr.io/linuxserver/firefox:latest
@@ -58,24 +55,20 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /DATA/AppData/$AppID/firefoxconfig:/config
+      - /DATA/AppData/$AppID/firefox:/config
     shm_size: "1gb"
     restart: unless-stopped
     network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
-#######################################################################################################################################################
 ######################################################### PROWLARR STACK ###############################################################################
-
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=Asia/Singapore
     volumes:
-      - /DATA/AppData/$AppID/prowlarrconfig:/config
-#    ports:
-#      - 9696:9696
+      - /DATA/AppData/$AppID/prowlarr:/config
     restart: unless-stopped
     network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
 
@@ -91,12 +84,7 @@ x-casaos:
       Lightweight swiss-knife-like VPN client to multiple VPN service providers
       **Features:**
       - Based on Alpine 3.22 for a small Docker image of 41.1MB
-      - Supports: AirVPN, Cyberghost, ExpressVPN, FastestVPN, Giganews, HideMyAss, IPVanish, IVPN, Mullvad (Wireguard only), NordVPN, Perfect Privacy, Privado, Private Internet Access, PrivateVPN, ProtonVPN, PureVPN, SlickVPN, Surfshark, TorGuard, VPNSecure.me, VPNUnlimited, Vyprvpn, Windscribe servers .
-      - Supports OpenVPN for all providers listed.
-      - Added qbittorrent service
-      - Firefox
-      - To add Radarr, Sonarr
-
+      - Supports Wireguard.
 
   tagline:
     en_us: Gluetun
@@ -112,7 +100,7 @@ x-casaos:
       en_us: |
         **Notes**
         - Qbittorrent: http://localhost:8080 and the username and password can be found in the logs.
-        - Gluetun default is set to Wireguard. Provide your own config. See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
+        - See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
         - Firefox: https://localhost:7001
         - Prowlarr: http://localhost:9696
 
