@@ -1,4 +1,4 @@
-name: gluetun
+name: gluetun-plus
 services:
   gluetun:
     image: qmcgaw/gluetun:v3.41.1
@@ -17,6 +17,7 @@ services:
       - 6881:6881/udp # qbittorrent port
       - 7000:3000      # Firefox Port
       - 7001:3001      # Firefox Port
+      - 9696:9696      # Prowlarr Port
       
     # Map volumes from the host to the container.
     volumes:
@@ -44,7 +45,7 @@ services:
 #      - WEBUI_PORT=3080  # PORT WILL BE ADDED in GLUETUN PORTS
       - TORRENTING_PORT=6881
     volumes:
-      - /DATA/AppData/$AppID/config:/config
+      - /DATA/AppData/$AppID/qbittorrentconfig:/config
       - /DATA/Downloads:/downloads #optional
     restart: unless-stopped
 #######################################################################################################################################################
@@ -57,16 +58,33 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /DATA/AppData/$AppID/config:/config
+      - /DATA/AppData/$AppID/firefoxconfig:/config
     shm_size: "1gb"
     restart: unless-stopped
     network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
 #######################################################################################################################################################
+######################################################### PROWLARR STACK ###############################################################################
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /DATA/AppData/$AppID/prowlarrconfig:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+#######################################################################################################################################################
+
 x-casaos:
   architectures:
     - amd64
   # Main service for this application
-  main: gluetun
+  main: gluetun-plus
   description:
     en_us: |
       Lightweight swiss-knife-like VPN client to multiple VPN service providers
@@ -85,6 +103,8 @@ x-casaos:
   author: snoopcatt
   icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/gluetun.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gluetun.png
+#######################################################################################################################################################
+
   # Installation tips
   tips:
     before_install:
@@ -92,9 +112,11 @@ x-casaos:
         **Notes**
         - Qbittorrent: http://localhost:8080 and the username and password can be found in the logs.
         - Gluetun default is set to Wireguard. Provide your own config. See devbeloper's site for info [Gluetun Docs](https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md)
-        -Firefox: https://localhost:7001
+        - Firefox: https://localhost:7001
+        - Prowlarr: http://localhost:9696
 
   title:
     en_us: Gluetun Plus
   category: Personal Apps
   port_map: ""
+#######################################################################################################################################################
