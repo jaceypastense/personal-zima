@@ -18,6 +18,8 @@ services:
       - 7000:3000      # Firefox Port
       - 7001:3001      # Firefox Port
       - 9696:9696      # Prowlarr Port
+      - 8989:8989      # Sonarr Port
+      - 7878:7878      # Radarr Port
       
     # Map volumes from the host to the container.
     volumes:
@@ -44,7 +46,7 @@ services:
       - TZ=Asia/Singapore
       - TORRENTING_PORT=6881
     volumes:
-      - /DATA/AppData/$AppID/qbittorrentconfig:/config
+      - /DATA/AppData/$AppID/qbittorrent:/config
       - /DATA/Downloads:/downloads #optional
     restart: unless-stopped
 ######################################################### FIREFOX STACK ###############################################################################
@@ -71,6 +73,33 @@ services:
       - /DATA/AppData/$AppID/prowlarr:/config
     restart: unless-stopped
     network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
+######################################################### RADAARR STACK ###############################################################################
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Singapore
+    volumes:
+      - /DATA/AppData/$AppID/radarr:/config
+    restart: unless-stopped
+    network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
+######################################################### SONARR STACK ###############################################################################
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Singapore
+    volumes:
+      - /path/to/sonarr/data:/config
+      - /path/to/tvseries:/tv #optional
+      - /path/to/downloadclient-downloads:/downloads #optional
+    restart: unless-stopped
+    network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
+    
 
 #######################################################################################################################################################
 
