@@ -74,9 +74,10 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /DATA/AppData/$AppID/prowlarrconfig:/config
-    ports:
-      - 9696:9696
+#    ports:
+#      - 9696:9696
     restart: unless-stopped
+    network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
 
 #######################################################################################################################################################
 
