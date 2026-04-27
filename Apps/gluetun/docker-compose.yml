@@ -21,6 +21,7 @@ services:
       - 8989:8989      # Sonarr Port
       - 7878:7878      # Radarr Port
       - 6767:6767      # Bazarr Port
+      - 8191:8191      # Flaresolverr Port
 
     # Map volumes from the host to the container.
     volumes:
@@ -113,6 +114,21 @@ services:
       - /DATA/AppData/$AppID/bazarr:/config
       - /DATA/Movies:/movies #optional
       - /DATA/TV:/tv #optional
+    restart: unless-stopped
+    network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
+######################################################### FLARESOLVERR STACK ##########################################################################
+  flaresolverr:
+    # DockerHub mirror flaresolverr/flaresolverr:latest
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=info
+      - LOG_FILE=none
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - TZ=Asia/Singapore
+    volumes:
+      - /DATA/AppData/$AppID/flaresolverr:/config
     restart: unless-stopped
     network_mode: "service:gluetun"       # ADD THIS LINE EVERYTIME YOU ADD A NEW STACK TO GLUETUN TO ROUTE TRAFFIC THROUGH GLUETUN
 #######################################################################################################################################################

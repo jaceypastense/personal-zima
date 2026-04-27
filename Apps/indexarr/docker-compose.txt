@@ -1,0 +1,20 @@
+services:
+  indexarr:
+    image: ausagentsmith/indexarr:latest
+    container_name: indexarr
+    ports:
+      - "8080:8080"
+      - "6881-6884:6881-6884/udp"
+      - "6895:6895/udp"
+    volumes:
+      - indexarr-data:/data
+    environment:
+      - INDEXARR_DB_BACKEND=sqlite
+      - INDEXARR_WORKERS=http_server,dht_crawler,resolver,sync
+      - INDEXARR_SYNC_ENABLED=true
+    restart: unless-stopped
+
+volumes:
+  indexarr-data:
+
+# SOURCE: https://indexarr.net/
