@@ -2,7 +2,7 @@
 name: opencloud
 services:
   app:
-    image: opencloudeu/opencloud-rolling
+    image: opencloudeu/opencloud-rolling:latest
     # user: "568:568"
     volumes:
       - /DATA/AppData/$AppID/data/data:/var/lib/opencloud
