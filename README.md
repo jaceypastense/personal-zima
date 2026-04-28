@@ -23,7 +23,8 @@ Gluetun +  ARR Stacks
 	- Radarr
 	- Sonarr
 	- Firefox
-	- TO Add Flaresolverr
+	- Flaresolverr
+	- TO Add Lidarr
 	 
 
 ### Karaoke Eternal

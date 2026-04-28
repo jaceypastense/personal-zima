@@ -1,17 +1,35 @@
+name: opencloud
 services:
   opencloud:
     image: opencloudeu/opencloud-rolling
     container_name: opencloud
     user: "568:568"
     volumes:
-      - /mnt/tank/configs/opencloud/data:/var/lib/opencloud
-      - /mnt/tank/configs/opencloud/config:/etc/opencloud
+      - /DATA/AppData/$AppID/data/data:/var/lib/opencloud
+      - /DATA/AppData/$AppID/data/config:/etc/opencloud
     ports:
       - 9200:9200
     entrypoint:
       - /bin/sh
     command: ["-c", "opencloud init --insecure true || true; opencloud server"]
     environment:
-      - OC_URL=https://cloud.yourdomain.com # https://IP-ADDRESS:9200
+      - OC_URL=https://IP-ADDRESS:9200 # https://IP-ADDRESS:9200 or https://cloud.yourdomain.com
       - IDM_CREATE_DEMO_USERS=false
     restart: unless-stopped
+  #########################################
+  x-casaos:
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: OpenCloud is an open-source project that gives you a secure and private way to store, access, and share your files..
+    developer: Openclouod-eu
+  
+  icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
+  thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
+  title:
+    en_us: Opencloud
+  category: Personal Apps
+  port_map: '9200'
+  tagline:
+    en_us: Fast, simple, and clean user interface!
