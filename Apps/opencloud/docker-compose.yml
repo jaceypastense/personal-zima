@@ -35,7 +35,6 @@ x-casaos:
       - 🛠️ Integrations with tools like Markdown Editor (ToastUI) and Web Office (Collabora)
       - 🕒 File history to track changes and restore previous versions
       - 📱 Multi-device sync with offline access across all your devices
-
       **Learn More:**
       - [Developer's Site](https://github.com/opencloud-eu/opencloud)
     developer: "Opencloud-eu"
@@ -47,5 +46,10 @@ x-casaos:
   category: Personal Apps
   port_map: '9200'
   tagline:
-    en_us: Rsync between your servers!
-  
+    en_us: Nextcloud alternative, not yet a replacement!
+  tips:
+    before_install:
+      en_us: |
+        **Notes**
+        - Access the web thru secured site: https://IP-address:9200 
+        - Check for the username and password under logs.
