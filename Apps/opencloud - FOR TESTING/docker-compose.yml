@@ -3,7 +3,7 @@ name: opencloud
 services:
   app:
     image: opencloudeu/opencloud-rolling
-    user: "568:568"
+    # user: "568:568"
     volumes:
       - /DATA/AppData/$AppID/data/data:/var/lib/opencloud
       - /DATA/AppData/$AppID/data/config:/etc/opencloud
@@ -25,13 +25,6 @@ x-casaos:
     en_us: |
       Nextcloud alternative.
       **Features:**
-      - Easy setup. You can even import from existing crontab.
-      - Safe adding, deleting or pausing jobs. Easy to maintain hundreds of jobs.
-      - Backup your crontabs.
-      - Export crontab and deploy on other machines without much hassle.
-      - Error log support.
-      - Mailing and hooks support.
-      
       - ⌨️ Keyboard shortcuts for quick file selection
       - 🖱️ Drag and drop support
       - 🔍 Powerful search by name, full text, OCR, file type, date, or tag
@@ -50,7 +43,7 @@ x-casaos:
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
   title:
-    en_us: Openclouod
+    en_us: Opencloud
   category: Personal Apps
   port_map: '9200'
   tagline:
