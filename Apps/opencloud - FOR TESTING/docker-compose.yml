@@ -16,14 +16,31 @@ services:
       - OC_URL=https://IP-ADDRESS:9200 # https://IP-ADDRESS:9200 or https://cloud.yourdomain.com
       - IDM_CREATE_DEMO_USERS=false
     restart: unless-stopped
-  #########################################
-  x-casaos:
+  #############################################
+x-casaos:
   architectures:
     - amd64
   main: app
   description:
-    en_us: OpenCloud is an open-source project that gives you a secure and private way to store, access, and share your files..
-    developer: Openclouod-eu
+    en_us: |
+      Host awesome karaoke parties where everyone can easily find and queue songs from their phone's browser. The player is also fully browser-based with support for MP3+G, MP4 videos and WebGL visualizations. The server is self-hosted and runs on nearly everything.
+      
+      **Features:**
+      - ⌨️ Keyboard shortcuts for quick file selection
+      - 🖱️ Drag and drop support
+      - 🔍 Powerful search by name, full text, OCR, file type, date, or tag
+      - 🔄 Reliable, fault-tolerant file synchronization
+      - 🔗 Flexible sharing options
+      - 🌐 Share files with public links
+      - 🗂️ Workspaces: Dedicated project folders designed to simplify team collaboration
+      - 🛠️ Integrations with tools like Markdown Editor (ToastUI) and Web Office (Collabora)
+      - 🕒 File history to track changes and restore previous versions
+      - 📱 Multi-device sync with offline access across all your devices
+
+      **Learn More:**
+      - [Developer's Site](https://github.com/opencloud-eu)
+
+    developer: "Opencloud-eu"
   
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
@@ -33,3 +50,5 @@ services:
   port_map: '9200'
   tagline:
     en_us: Fast, simple, and clean user interface!
+  #####
+  
