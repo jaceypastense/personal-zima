@@ -1,12 +1,13 @@
+#####
 name: opencloud
 services:
-  opencloud:
+  app:
     image: opencloudeu/opencloud-rolling
-    container_name: opencloud
     user: "568:568"
     volumes:
       - /DATA/AppData/$AppID/data/data:/var/lib/opencloud
       - /DATA/AppData/$AppID/data/config:/etc/opencloud
+    restart: unless-stopped
     ports:
       - 9200:9200
     entrypoint:
@@ -15,17 +16,22 @@ services:
     environment:
       - OC_URL=https://IP-ADDRESS:9200 # https://IP-ADDRESS:9200 or https://cloud.yourdomain.com
       - IDM_CREATE_DEMO_USERS=false
-    restart: unless-stopped
-  #############################################
+#
 x-casaos:
   architectures:
     - amd64
   main: app
   description:
     en_us: |
-      Host awesome karaoke parties where everyone can easily find and queue songs from their phone's browser. The player is also fully browser-based with support for MP3+G, MP4 videos and WebGL visualizations. The server is self-hosted and runs on nearly everything.
-      
+      Nextcloud alternative.
       **Features:**
+      - Easy setup. You can even import from existing crontab.
+      - Safe adding, deleting or pausing jobs. Easy to maintain hundreds of jobs.
+      - Backup your crontabs.
+      - Export crontab and deploy on other machines without much hassle.
+      - Error log support.
+      - Mailing and hooks support.
+      
       - ⌨️ Keyboard shortcuts for quick file selection
       - 🖱️ Drag and drop support
       - 🔍 Powerful search by name, full text, OCR, file type, date, or tag
@@ -38,17 +44,15 @@ x-casaos:
       - 📱 Multi-device sync with offline access across all your devices
 
       **Learn More:**
-      - [Developer's Site](https://github.com/opencloud-eu)
-
+      - [Developer's Site](https://github.com/opencloud-eu/opencloud)
     developer: "Opencloud-eu"
   
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
   thumbnail: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/open-cloud-dark.png
   title:
-    en_us: Opencloud
+    en_us: Openclouod
   category: Personal Apps
   port_map: '9200'
   tagline:
-    en_us: Fast, simple, and clean user interface!
-  #####
+    en_us: Rsync between your servers!
   
