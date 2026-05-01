@@ -1,0 +1,15 @@
+# --- App Configuration ---
+PROJECT_URL=http://localhost:8887
+
+# ⚠️ GENERATE A STRONG SECRET (e.g., openssl rand -hex 32)
+# This secret is used to encrypt communications with agents.
+PROJECT_SECRET=change_me_please_generate_a_secure_hex_token
+
+# --- Database URL ---
+POSTGRES_USER=portabase
+POSTGRES_PASSWORD=changeme
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+POSTGRES_DB=portabase
+
+DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=public
